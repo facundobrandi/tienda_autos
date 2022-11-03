@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form id="formArticulosModi" method="post" enctype="multipart/form-data">
+
+        <label>MODELO</label>
+        <input type="text" id="modelo" name="modelo">
+        
+        <label>Documento Pdf: </label>
+        <input type="file" id="documentoPdf" name="documentoPdf">
+
+ 
+    </form>
+
+    <input type="button" value="Enviar" id="enviar"> 
+
+    <div class="errores">
+
+    </div>
+
+    <script>
+        $(document).ready(function()
+        {
+            $("#enviar").click(function()
+            {
+
+                var data = new FormData($("#formArticulosModi")[0]);
+
+
+                    var objAjax = $.ajax({
+                    type: 'post',
+                    method: 'post',
+                    enctype: 'multipart/form-data',
+                    url: "./subir.php",
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    data: data,
+                    success: function(respuestaDelServer,estado)
+                    {
+                        $(".errores").html(respuestaDelServer);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
