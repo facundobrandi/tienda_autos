@@ -12,4 +12,4 @@ los autos
 
 el mandado de mail esta hecho con la libreria PHPMailer , tambien uso SweetAlert2, Tostyfi y BootStrap
 
-puede ingresar en la pagina desde https://facundobrandi.herokuapp.com
+
